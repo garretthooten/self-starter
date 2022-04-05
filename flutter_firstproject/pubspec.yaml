@@ -96,3 +96,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Regular.tff
+          weight: 300
+        - asset: assets/fonts/Montserrat-Bold.tff
+          weight: 600
