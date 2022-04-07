@@ -99,7 +99,7 @@ flutter:
   fonts:
     - family: Montserrat
       fonts:
-        - asset: assets/fonts/Montserrat-Regular.tff
+        - asset: flutter_firstproject/assets/fonts/Montserrat-Regular.tff
           weight: 300
-        - asset: assets/fonts/Montserrat-Bold.tff
+        - asset: flutter_firstproject/assets/fonts/Montserrat-Bold.tff
           weight: 600
