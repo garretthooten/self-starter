@@ -10,7 +10,7 @@ import 'utils/shared_prefs.dart';
 
 import 'models/ModelProvider.dart';
 import 'amplifyconfiguration.dart';
-import 'profile/profile_repositiory.dart';
+import 'profile/profile_repository.dart';
 
 import 'screens/home.dart';
 

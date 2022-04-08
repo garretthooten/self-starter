@@ -2,12 +2,12 @@
 
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
+class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Temp Homepage'),
+        title: Text('Temp loginscreen'),
       ),
       body: Text('Josiah will have an awesome page here!'),
     );
