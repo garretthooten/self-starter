@@ -1,5 +1,5 @@
 name: flutter_firstproject
-description: An attempt at creating a senior thesis in one hour that makes professor shit his dick out.
+description: Self-Starter.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -99,7 +99,7 @@ flutter:
   fonts:
     - family: Montserrat
       fonts:
-        - asset: flutter_firstproject/assets/fonts/Montserrat-Regular.tff
+        - asset: assets\fonts\Montserrat-Regular.ttf
           weight: 300
-        - asset: flutter_firstproject/assets/fonts/Montserrat-Bold.tff
+        - asset: assets\fonts\Montserrat-Bold.ttf
           weight: 600

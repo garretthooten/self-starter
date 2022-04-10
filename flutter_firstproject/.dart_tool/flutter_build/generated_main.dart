@@ -5,10 +5,10 @@
 
 // @dart = 2.16
 
-// When `package:flutter_firstproject/main.dart` defines `main`, that definition is shadowed by the definition below.
-export 'package:flutter_firstproject/main.dart';
+// When `package:flutter_firstproject/screens/chat.dart` defines `main`, that definition is shadowed by the definition below.
+export 'package:flutter_firstproject/screens/chat.dart';
 
-import 'package:flutter_firstproject/main.dart' as entrypoint;
+import 'package:flutter_firstproject/screens/chat.dart' as entrypoint;
 import 'dart:io'; // flutter_ignore: dart_io_import.
 import 'package:path_provider_android/path_provider_android.dart';
 import 'package:path_provider_ios/path_provider_ios.dart';
