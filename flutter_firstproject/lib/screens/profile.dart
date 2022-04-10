@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'nav_drawer.dart';
 
 class Profile extends StatelessWidget {
   const Profile({Key? key, String? title}) : super(key: key);
@@ -7,10 +8,18 @@ class Profile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'My Profile ',
+        title: const Text('My Profile ',),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.list),
+              onPressed: () { Scaffold.of(context).openDrawer(); },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
         ),
       ),
+      drawer: NavDrawer(),
       body: Column(
         children: [
           Stack(

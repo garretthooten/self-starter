@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'login.dart';
-import 'profile.dart';
+import 'nav_drawer.dart';
 
 class Home extends StatelessWidget{
   const Home({Key? key}) : super(key: key);
@@ -10,7 +10,17 @@ class Home extends StatelessWidget{
     return Scaffold(
       appBar: AppBar(
         title: const Text('Self-Starter'),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.list),
+              onPressed: () { Scaffold.of(context).openDrawer(); },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
       ),
+      drawer: NavDrawer(),
       body: Center(
         child: Column(
           children: <Widget>[
@@ -24,12 +34,8 @@ class Home extends StatelessWidget{
                 },
             ),
             ElevatedButton(
-              child: const Text('Register(goes to profile screen for now)'),
-              onPressed: () {
-                Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Profile()),
-              );},
+              child: const Text('Register(not working)'),
+              onPressed: () {},
             ),
           ]
         ),

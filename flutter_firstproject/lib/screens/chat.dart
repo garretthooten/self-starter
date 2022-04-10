@@ -1,28 +1,10 @@
 import 'package:flutter/material.dart';
+import 'nav_drawer.dart';
 
-void main() {
-  runApp(
-    const FriendlyChatApp(),
-  );
-}
-
-String _name = 'Your Name';
-
-class FriendlyChatApp extends StatelessWidget {
-  const FriendlyChatApp({Key? key,}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'FriendlyChat',
-      home: ChatScreen(),
-    );
-  }
-}
-
-class ChatMessage extends StatelessWidget {
-  const ChatMessage({required this.text, Key? key,}) : super(key: key);
+class Chat extends StatelessWidget {
+  const Chat({required this.text, Key? key,}) : super(key: key);
   final String text;
+  final String _name = 'Your Name';
 
   @override
   Widget build(BuildContext context) {
@@ -59,13 +41,13 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  final List<ChatMessage> _messages = [];
+  final List<Chat> _messages = [];
   final _textController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
 
   void _handleSubmitted(String text) {
     _textController.clear();
-    var message = ChatMessage(
+    var message = Chat(
       text: text,
     );
     setState(() {
@@ -77,7 +59,19 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('FriendlyChat')),
+      appBar: AppBar(
+        title: const Text('FriendlyChat'),
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.list),
+              onPressed: () { Scaffold.of(context).openDrawer(); },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
+      ),
+      drawer: NavDrawer(),
       body: Column(
         children: [
           Flexible(

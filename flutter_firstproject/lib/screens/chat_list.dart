@@ -1,23 +1,14 @@
-
 import 'package:flutter/material.dart';
+import 'nav_drawer.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class ChatList extends StatefulWidget {
+  const ChatList({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Friends List',
-      home: RandomWords(),
-    );
-  }
+  State<ChatList> createState() => ChatListState();
 }
 
-class _RandomWordsState extends State<RandomWords> {
+class ChatListState extends State<ChatList> {
   final _suggestions = <String>[];
   final _saved = <String>{};
   final _biggerFont = const TextStyle(fontSize: 18.0);
@@ -29,11 +20,21 @@ class _RandomWordsState extends State<RandomWords> {
         title: const Text('Friends List'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.list),
+            icon: const Icon(Icons.menu),
             onPressed: _pushSaved,
           ),
         ],
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.list),
+              onPressed: () { Scaffold.of(context).openDrawer(); },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
       ),
+      drawer: NavDrawer(),
       body: ListView.builder(
         padding: const EdgeInsets.all(16.0),
         itemBuilder: (context, i) {
@@ -104,13 +105,4 @@ class _RandomWordsState extends State<RandomWords> {
       ),
     );
   }
-}
-
-
-
-class RandomWords extends StatefulWidget {
-  const RandomWords({Key? key}) : super(key: key);
-
-  @override
-  _RandomWordsState createState() => _RandomWordsState();
 }

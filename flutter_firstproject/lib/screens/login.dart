@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'nav_drawer.dart';
 
 class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
@@ -20,8 +21,9 @@ class Login extends StatelessWidget {
           },
         ),
       ),
-      body: Center(
+      drawer: NavDrawer(),
 
+      body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
