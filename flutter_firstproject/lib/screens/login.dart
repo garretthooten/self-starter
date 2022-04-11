@@ -8,7 +8,7 @@ import 'package:amplify_datastore/amplify_datastore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'profile.dart';
-import 'register_screen.dart';
+import 'register.dart';
 import '../models/ModelProvider.dart';
 import '../profile/profile_repository.dart';
 import '../style.dart';
@@ -139,7 +139,18 @@ class Login extends StatelessWidget {
                 },
                 label: const Text('Submit'),
               ),
-            )
+            ),
+            Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 100, vertical: 5),
+                child: FloatingActionButton.extended(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return RegisterScreen();
+                      }));
+                    },
+                    label: const Text('Register')))
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.

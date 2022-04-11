@@ -159,6 +159,31 @@ class LoginRepository extends ChangeNotifier {
     }
   }
 
+  Future<bool> loginWithInput(String un, String pw) async {
+    loading = true;
+    try {
+      SignInResult res = await Amplify.Auth.signIn(
+        username: un,
+        password: pw,
+      );
+
+      isSignedIn = res.isSignedIn;
+      loading = false;
+      if (isSignedIn) {
+        print("Google signed In");
+        loading = false;
+      } else {
+        loading = false;
+      }
+
+      return isSignedIn;
+    } on AuthException catch (e) {
+      print(e.message);
+      loading = false;
+      return isSignedIn;
+    }
+  }
+
   Future<bool?> register(BuildContext context) async {
     loading = true;
     try {
