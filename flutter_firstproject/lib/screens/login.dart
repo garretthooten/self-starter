@@ -1,10 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firstproject/profile/profile_repository.dart';
+import 'package:provider/provider.dart';
 import 'nav_drawer.dart';
+
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
+import 'package:amplify_datastore/amplify_datastore.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'profile.dart';
+import 'register_screen.dart';
+import '../models/ModelProvider.dart';
+import '../profile/profile_repository.dart';
+import '../style.dart';
+import '../utils/shared_prefs.dart';
+import 'package:amplify_api/amplify_api.dart';
+import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
+import 'package:amplify_storage_s3/amplify_storage_s3.dart';
+import 'package:flutter/material.dart';
+// Amplify Flutter Packages
+import 'package:amplify_flutter/amplify.dart';
+import 'package:provider/provider.dart';
+
+import '../amplifyconfiguration.dart';
+
+import '../login/login_repository.dart';
 
 class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
+  final loginRep = LoginRepository.instance();
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +90,38 @@ class Login extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 100, vertical: 5),
               child: FloatingActionButton.extended(
                 onPressed: () {
+                  if (true /* replace this with validation criteria */) {
+                    loginRep
+                        .loginWithInput(
+                            usernameController.text, passwordController.text)
+                        .then((bool isSignedIn) {
+                      if (isSignedIn) {
+                        loginRep
+                            .retrieveCurrentUser()
+                            .then((AuthUser authUser) {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return ChangeNotifierProvider(
+                                create: (_) => ProfileRepository.instance(),
+                                child: Profile());
+                          }));
+                        });
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(content: Text('Signed in!'));
+                            });
+                      } else {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                  content: Text('Failed to sign in!'));
+                            });
+                      }
+                    });
+                  }
+
                   showDialog(
                     context: context,
                     builder: (context) {
