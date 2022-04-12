@@ -58,7 +58,7 @@ class RegisterScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
               child: Text(
-                'Create a username and password',
+                'Enter your email and create a username and password',
               ),
             ),
             Padding(
@@ -80,6 +80,17 @@ class RegisterScreen extends StatelessWidget {
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'Enter Password',
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+              child: TextField(
+                controller: loginRep.emailController,
+                //controller: passwordController,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'Enter Email',
                 ),
               ),
             ),

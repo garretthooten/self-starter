@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'login.dart';
+import 'register.dart';
 import 'nav_drawer.dart';
+import 'otp_screen.dart';
+import '../profile/profile_repository.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    ProfileRepository profileRep = ProfileRepository.instance();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Self-Starter'),
@@ -35,8 +39,29 @@ class Home extends StatelessWidget {
             },
           ),
           ElevatedButton(
-            child: const Text('Register(not working)'),
-            onPressed: () {},
+            child: const Text('Register'),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => RegisterScreen()));
+            },
+          ),
+          ElevatedButton(
+            child: const Text('OTP'),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => OtpScreen(
+                          username: 'username',
+                          password: 'password',
+                          email: 'thisisnotarealmail@ghootenmail.com')));
+            },
+          ),
+          ElevatedButton(
+            child: const Text('Sign Out'),
+            onPressed: () {
+              profileRep.signOut();
+            },
           ),
         ]),
       ),

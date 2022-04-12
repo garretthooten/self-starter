@@ -59,7 +59,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Friends',
+        title: 'Self-Starter',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
             primaryColor: const Color(0xFF1c1c1c),

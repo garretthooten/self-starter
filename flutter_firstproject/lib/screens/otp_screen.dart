@@ -23,6 +23,7 @@ class _OtpScreenState extends State<OtpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
         backgroundColor: ThemeColor.bgColor,
         appBar: AppBar(
