@@ -4,3 +4,6 @@ Document your name and what you contributed here:
 
 Garrett Hooten: AWS Amplify set up, connecting front-end to AWS
   Branches: develop, basic-functionality, implementing-ui
+
+Josiah Key: UI interface, UI element design
+  Branches: uistuff, develope
