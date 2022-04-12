@@ -1,0 +1,5 @@
+SELF-STARTER AUTHORS
+
+Document your name and what you contributed here:
+
+Garrett Hooten: AWS Amplify set up, connecting front-end to AWS
