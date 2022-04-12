@@ -9,7 +9,6 @@ import 'package:amplify_datastore/amplify_datastore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'profile.dart';
-import 'register_screen.dart';
 import '../models/ModelProvider.dart';
 import '../profile/profile_repository.dart';
 import '../style.dart';
