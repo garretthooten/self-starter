@@ -12,6 +12,7 @@ import 'models/ModelProvider.dart';
 import 'amplifyconfiguration.dart';
 import 'profile/profile_repository.dart';
 import 'posts/post_repository.dart';
+import 'screens/edit_profile_screen.dart';
 
 import 'screens/home.dart';
 
@@ -69,6 +70,9 @@ class _MyAppState extends State<MyApp> {
           providers: [
             ChangeNotifierProvider(
               create: (_) => ProfileRepository.instance(),
+              child: MaterialApp(
+                home: EditProfileScreen(ProfileRepository.instance().userId),
+              ),
             ),
             ChangeNotifierProvider(
               create: (_) => PostRepository.instance(),

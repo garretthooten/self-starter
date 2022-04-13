@@ -4,6 +4,7 @@ import 'register.dart';
 import 'nav_drawer.dart';
 import 'otp_screen.dart';
 import '../profile/profile_repository.dart';
+import 'edit_profile_screen.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -55,6 +56,16 @@ class Home extends StatelessWidget {
                           username: 'username',
                           password: 'password',
                           email: 'thisisnotarealmail@ghootenmail.com')));
+            },
+          ),
+          ElevatedButton(
+            child: const Text('Edit Profile'),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          EditProfileScreen(profileRep.userId)));
             },
           ),
           ElevatedButton(

@@ -13,6 +13,7 @@ import '../profile/profile_repository.dart';
 
 class LoginRepository extends ChangeNotifier {
   LoginRepository.instance();
+  ProfileRepository profileRep = ProfileRepository.instance();
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
   final emailController = TextEditingController();

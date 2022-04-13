@@ -209,12 +209,38 @@ class ProfileRepository extends ChangeNotifier {
   Future<User> getUserProfile(String userId) async {
     List<User> user = await Amplify.DataStore.query(User.classType,
         where: User.ID.eq(userId));
-    print(user[0]);
+    //print(user[0]);
+    var mylen = user.length;
+    print('user length: $mylen');
+    if (mylen == 0) {
+      saveUserProfileDetails();
+      user = await Amplify.DataStore.query(User.classType,
+          where: User.ID.eq(userId));
+      mylen = user.length;
+      print('user length: $mylen');
+    }
 
     firstNamesController.text = user[0].firstName as String;
     lastNamesController.text = user[0].lastName!;
     profilePic = user[0].profilePicUrl!;
 
-    return user[0];
+    /*
+    try {
+      final awsUser = await Amplify.Auth.getCurrentUser();
+      List<User> users = await Amplify.DataStore.query(User.classType);
+      var myUserId = awsUser.userId;
+      print("my user id is: $myUserId");
+      users.forEach((element) {
+        var myListUserId = element.id;
+        print('[list] my id is : $myListUserId');
+      });
+      print('i hate you');
+    } on AuthException catch (e) {
+      print("Error retrieving current user: $e");
+    }
+    */
+
+    return User();
+    //return user[0];
   }
 }
