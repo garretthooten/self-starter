@@ -4,6 +4,7 @@ import 'login.dart';
 import 'profile.dart';
 import 'chat_list.dart';
 import 'chat.dart';
+import '../profile/profile_repository.dart';
 
 class NavDrawer extends StatelessWidget {
   const NavDrawer({Key? key}) : super(key: key);
@@ -43,7 +44,9 @@ class NavDrawer extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Profile()),
+                MaterialPageRoute(
+                    builder: (context) =>
+                        Profile('Test', 'User', 'A user of Self-Starter')),
               );
             },
           ),

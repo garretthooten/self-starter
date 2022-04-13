@@ -26,6 +26,9 @@ class ProfileRepository extends ChangeNotifier {
 
   String get email => _email;
 
+  String fname = 'Test';
+  String lname = 'User';
+
   set email(String value) {
     _email = value;
     notifyListeners();
@@ -186,6 +189,9 @@ class ProfileRepository extends ChangeNotifier {
         createdOn: TemporalDateTime.now(),
         isVerified: true);
 
+    fname = newUser.firstName as String;
+    lname = newUser.lastName as String;
+
     await Amplify.DataStore.save(newUser).then((_) => loading = false);
   }
 
@@ -196,12 +202,15 @@ class ProfileRepository extends ChangeNotifier {
 
     List<User> user = await Amplify.DataStore.query(User.classType,
         where: User.ID.eq(userId));
+
     User newUser = user[0].copyWith(
         id: user[0].id,
         firstName: firstNamesController.text.trim(),
         lastName: lastNamesController.text.trim(),
         profilePicUrl: profilePic,
         updatedOn: TemporalDateTime.now());
+    fname = newUser.firstName as String;
+    lname = newUser.lastName as String;
 
     await Amplify.DataStore.save(newUser).then((_) => loading = false);
   }
@@ -224,6 +233,9 @@ class ProfileRepository extends ChangeNotifier {
     lastNamesController.text = user[0].lastName!;
     profilePic = user[0].profilePicUrl!;
 
+    fname = user[0].firstName as String;
+    lname = user[0].lastName as String;
+
     /*
     try {
       final awsUser = await Amplify.Auth.getCurrentUser();
@@ -240,7 +252,7 @@ class ProfileRepository extends ChangeNotifier {
     }
     */
 
-    return User();
+    return user[0];
     //return user[0];
   }
 }

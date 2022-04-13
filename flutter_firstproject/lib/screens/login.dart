@@ -103,7 +103,8 @@ class Login extends StatelessWidget {
                               MaterialPageRoute(builder: (context) {
                             return ChangeNotifierProvider(
                                 create: (_) => ProfileRepository.instance(),
-                                child: Profile());
+                                child: Profile('Please Refresh',
+                                    'Please Refresh', 'Please Refresh'));
                           }));
                         });
                         showDialog(

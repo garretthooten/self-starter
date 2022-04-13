@@ -1,11 +1,29 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../profile/profile_repository.dart';
+import '../models/User.dart';
 import 'nav_drawer.dart';
+import 'package:path/path.dart';
 
 class Profile extends StatelessWidget {
-  const Profile({Key? key, String? title}) : super(key: key);
+  //Profile({Key? key, String? title}) : super(key: key);
+  Profile(this._firstname, this._lastname, this._about);
+  String _firstname;
+  String _lastname;
+  String _about;
+  late Future<String> _name;
+  ProfileRepository profileRep = ProfileRepository.instance();
+
+  void initState() {
+    _name = getName(profileRep.userId);
+  }
+
   @override
   Widget build(BuildContext context) {
+    String userId = profileRep.userId;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -51,13 +69,17 @@ class Profile extends StatelessWidget {
           const SizedBox(
             height: 45,
           ),
-          const ListTile(
-            title: Center(child: Text('My Name')),
-            subtitle: Center(child: Text('Computer Science Student ')),
+          /*
+          ListTile(
+            title: Center(child: (Text(_firstname + ' ' + _lastname))),
           ),
-          const ListTile(
-            title: Text('About me '),
-            subtitle: Text('text about me'),
+          */
+          ListTile(
+              title: Center(
+                  child: (Text(profileRep.fname + ' ' + profileRep.lname)))),
+          ListTile(
+            title: Text('About me'),
+            subtitle: Text(_about),
           ),
           const SizedBox(
             height: 20,
@@ -94,5 +116,14 @@ class Profile extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<String> getName(String userId) async {
+    User currentUser = await profileRep.getUserProfile(userId);
+    String currentName = (currentUser.firstName as String) +
+        ' ' +
+        (currentUser.lastName as String);
+    print('in function: $currentName');
+    return currentName;
   }
 }

@@ -12,6 +12,7 @@ import 'package:path_provider/path_provider.dart' as path_provider;
 import 'package:provider/provider.dart';
 import 'package:image_picker/image_picker.dart';
 import '../utils/app_theme.dart';
+import 'profile.dart';
 
 class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen(this.userId);
@@ -450,7 +451,16 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                                                 .instance(),
                                                       ),
                                                     ],
-                                                    child: Home(),
+                                                    child: Profile(
+                                                        profileRepo
+                                                            .firstNamesController
+                                                            .text
+                                                            .trim(),
+                                                        profileRepo
+                                                            .lastNamesController
+                                                            .text
+                                                            .trim(),
+                                                        'A user of Self-Starter'),
                                                   );
                                                 }));
                                               });

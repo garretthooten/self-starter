@@ -88,7 +88,8 @@ class OtpScreen extends StatelessWidget {
                               MaterialPageRoute(builder: (context) {
                             return ChangeNotifierProvider(
                                 create: (_) => ProfileRepository.instance(),
-                                child: Profile());
+                                child: Profile(
+                                    'Test', 'User', 'A user of Self-Starter'));
                           }));
                         });
                         showDialog(

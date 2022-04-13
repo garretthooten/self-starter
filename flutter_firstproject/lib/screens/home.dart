@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firstproject/screens/profile.dart';
 import 'login.dart';
 import 'register.dart';
 import 'nav_drawer.dart';
 import 'otp_screen.dart';
 import '../profile/profile_repository.dart';
 import 'edit_profile_screen.dart';
+import 'profile_screen.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -66,6 +68,15 @@ class Home extends StatelessWidget {
                   MaterialPageRoute(
                       builder: (context) =>
                           EditProfileScreen(profileRep.userId)));
+            },
+          ),
+          ElevatedButton(
+            child: const Text('Profile'),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ProfileScreen(profileRep.userId)));
             },
           ),
           ElevatedButton(
