@@ -1,0 +1,97 @@
+Flutter crash report.
+Please report a bug at https://github.com/flutter/flutter/issues.
+
+## command
+
+flutter --quiet assemble --no-version-check --depfile C:\Users\Garrett\Documents\repos\self-starter\flutter_firstproject\build\app\intermediates\flutter\debug/flutter_build.d --output C:\Users\Garrett\Documents\repos\self-starter\flutter_firstproject\build\app\intermediates\flutter\debug -dTargetFile=C:\Users\Garrett\Documents\repos\self-starter\flutter_firstproject\lib\main.dart -dTargetPlatform=android -dBuildMode=debug -dTrackWidgetCreation=true --DartDefines=RkxVVFRFUl9XRUJfQVVUT19ERVRFQ1Q9dHJ1ZQ== debug_android_application
+
+## exception
+
+ArgumentError: Invalid argument(s): Uri c:%5CUsers%5CGarrett%5CDocuments%5Crepos%5Cself-starter%5Cflutter_firstproject%5Cassets%5Cfonts%5CMontserrat-Regular.ttf must have scheme 'file:'.
+
+```
+#0      WindowsStyle.pathFromUri (package:path/src/style/windows.dart:88:7)
+#1      Context.fromUri (package:path/src/context.dart:1000:32)
+#2      ManifestAssetBundle._resolveAsset (package:flutter_tools/src/asset.dart:820:47)
+#3      ManifestAssetBundle._parseAssets (package:flutter_tools/src/asset.dart:714:34)
+#4      ManifestAssetBundle.build (package:flutter_tools/src/asset.dart:245:54)
+<asynchronous suspension>
+#5      copyAssets (package:flutter_tools/src/build_system/targets/assets.dart:50:26)
+<asynchronous suspension>
+#6      AndroidAssetBundle.build (package:flutter_tools/src/build_system/targets/android.dart:64:34)
+<asynchronous suspension>
+#7      _BuildInstance._invokeInternal (package:flutter_tools/src/build_system/build_system.dart:839:9)
+<asynchronous suspension>
+#8      FlutterBuildSystem.build (package:flutter_tools/src/build_system/build_system.dart:606:16)
+<asynchronous suspension>
+#9      AssembleCommand.runCommand (package:flutter_tools/src/commands/assemble.dart:317:32)
+<asynchronous suspension>
+#10     FlutterCommand.run.<anonymous closure> (package:flutter_tools/src/runner/flutter_command.dart:1161:27)
+<asynchronous suspension>
+#11     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:150:19)
+<asynchronous suspension>
+#12     CommandRunner.runCommand (package:args/command_runner.dart:209:13)
+<asynchronous suspension>
+#13     FlutterCommandRunner.runCommand.<anonymous closure> (package:flutter_tools/src/runner/flutter_command_runner.dart:281:9)
+<asynchronous suspension>
+#14     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:150:19)
+<asynchronous suspension>
+#15     FlutterCommandRunner.runCommand (package:flutter_tools/src/runner/flutter_command_runner.dart:229:5)
+<asynchronous suspension>
+#16     run.<anonymous closure>.<anonymous closure> (package:flutter_tools/runner.dart:62:9)
+<asynchronous suspension>
+#17     AppContext.run.<anonymous closure> (package:flutter_tools/src/base/context.dart:150:19)
+<asynchronous suspension>
+#18     main (package:flutter_tools/executable.dart:94:3)
+<asynchronous suspension>
+```
+
+## flutter doctor
+
+```
+[✓] Flutter (Channel stable, 2.10.3, on Microsoft Windows [Version 10.0.19044.1586], locale en-US)
+    • Flutter version 2.10.3 at C:\Users\Garrett\Documents\flutter
+    • Upstream repository https://github.com/flutter/flutter.git
+    • Framework revision 7e9793dee1 (5 weeks ago), 2022-03-02 11:23:12 -0600
+    • Engine revision bd539267b4
+    • Dart version 2.16.1
+    • DevTools version 2.9.2
+
+[✓] Android toolchain - develop for Android devices (Android SDK version 32.1.0-rc1)
+    • Android SDK at C:\Users\Garrett\AppData\Local\Android\sdk
+    • Platform android-32, build-tools 32.1.0-rc1
+    • Java binary at: C:\Program Files\Android\Android Studio\jre\bin\java
+    • Java version OpenJDK Runtime Environment (build 11.0.11+9-b60-7590822)
+    • All Android licenses accepted.
+
+[✓] Chrome - develop for the web
+    • Chrome at C:\Program Files\Google\Chrome\Application\chrome.exe
+
+[✓] Visual Studio - develop for Windows (Visual Studio Community 2019 16.11.10)
+    • Visual Studio at C:\Program Files (x86)\Microsoft Visual Studio\2019\Community
+    • Visual Studio Community 2019 version 16.11.32126.315
+    • Windows 10 SDK version 10.0.19041.0
+
+[✓] Android Studio (version 2021.1)
+    • Android Studio at C:\Program Files\Android\Android Studio
+    • Flutter plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/9212-flutter
+    • Dart plugin can be installed from:
+      🔨 https://plugins.jetbrains.com/plugin/6351-dart
+    • Java version OpenJDK Runtime Environment (build 11.0.11+9-b60-7590822)
+
+[✓] VS Code (version 1.66.0)
+    • VS Code at C:\Users\Garrett\AppData\Local\Programs\Microsoft VS Code
+    • Flutter extension version 3.38.0
+
+[✓] Connected device (4 available)
+    • Android SDK built for x86 (mobile) • emulator-5554 • android-x86    • Android 11 (API 30) (emulator)
+    • Windows (desktop)                  • windows       • windows-x64    • Microsoft Windows [Version 10.0.19044.1586]
+    • Chrome (web)                       • chrome        • web-javascript • Google Chrome 100.0.4896.75
+    • Edge (web)                         • edge          • web-javascript • Microsoft Edge 99.0.1150.46
+
+[✓] HTTP Host Availability
+    • All required HTTP hosts are available
+
+• No issues found!
+```
