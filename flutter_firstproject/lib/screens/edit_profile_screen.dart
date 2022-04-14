@@ -88,7 +88,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             child: Icon(
               Icons.account_circle,
               size: 100,
-              color: ThemeColor.primary,
+              color: Colors.white,
             )),
       );
     } else {
@@ -102,7 +102,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             child: const Icon(
               Icons.account_circle,
               size: 100,
-              color: ThemeColor.primary,
+              color: Colors.white,
             )),
       );
     }
@@ -200,7 +200,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       border: Border.all(
                           color: Colors.grey.withOpacity(0.5), width: 1),
                       borderRadius: BorderRadius.circular(30),
-                      color: ThemeColor.primary.withOpacity(0.2)),
+                      color: Colors.white.withOpacity(0.2)),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -238,8 +238,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                                           valueColor:
                                                               AlwaysStoppedAnimation<
                                                                       Color>(
-                                                                  ThemeColor
-                                                                      .primary),
+                                                                  Colors.white),
                                                         ),
                                                     errorWidget: (context, url,
                                                             ex) =>
@@ -298,8 +297,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                        color: ThemeColor.primary,
-                                        width: 2.toWidth),
+                                        color: Colors.white, width: 2.toWidth),
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(10.toWidth),
                                     ),
@@ -356,8 +354,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                        color: ThemeColor.primary,
-                                        width: 2.toWidth),
+                                        color: Colors.white, width: 2.toWidth),
                                     borderRadius: BorderRadius.all(
                                       Radius.circular(10.toWidth),
                                     ),
@@ -404,8 +401,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                               end: Alignment(0.8,
                                                   0.0), // 10% of the width, so there are ten blinds.
                                               colors: [
-                                                ThemeColor.primary,
-                                                ThemeColor.secondary
+                                                Colors.white,
+                                                Colors.black
                                               ], // red to yellow
                                               tileMode: TileMode
                                                   .clamp // repeats the gradient over the canvas
