@@ -448,16 +448,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                                                                 .instance(),
                                                       ),
                                                     ],
-                                                    child: Profile(
-                                                        profileRepo
-                                                            .firstNamesController
-                                                            .text
-                                                            .trim(),
-                                                        profileRepo
-                                                            .lastNamesController
-                                                            .text
-                                                            .trim(),
-                                                        'A user of Self-Starter'),
+                                                    child: Profile(),
                                                   );
                                                 }));
                                               });
