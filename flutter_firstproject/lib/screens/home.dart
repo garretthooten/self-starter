@@ -47,6 +47,7 @@ class Home extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => RegisterScreen()));
             },
           ),
+          /*
           ElevatedButton(
             child: const Text('OTP'),
             onPressed: () {
@@ -82,6 +83,7 @@ class Home extends StatelessWidget {
               profileRep.signOut();
             },
           ),
+          */
         ]),
       ),
     );

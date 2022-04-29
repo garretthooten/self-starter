@@ -48,6 +48,7 @@ class NavDrawer extends StatelessWidget {
               );
             },
           ),
+          /*
           ListTile(
             title: const Text('Chat List'),
             onTap: () {
@@ -67,6 +68,7 @@ class NavDrawer extends StatelessWidget {
                   ));
             },
           ),
+          */
         ],
       ),
     );

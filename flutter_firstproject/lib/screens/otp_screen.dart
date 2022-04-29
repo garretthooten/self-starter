@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firstproject/profile/edit_profile_screen.dart';
 import 'package:flutter_firstproject/profile/profile_repository.dart';
 import 'package:provider/provider.dart';
 import 'nav_drawer.dart';
@@ -88,7 +89,7 @@ class OtpScreen extends StatelessWidget {
                               MaterialPageRoute(builder: (context) {
                             return ChangeNotifierProvider(
                                 create: (_) => ProfileRepository.instance(),
-                                child: Profile());
+                                child: EditProfileScreen(authUser.userId));
                           }));
                         });
                         showDialog(
