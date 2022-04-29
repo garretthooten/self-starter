@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firstproject/screens/edit_profile_screen.dart';
 import 'home.dart';
 import 'login.dart';
 import 'profile.dart';
@@ -44,7 +45,17 @@ class NavDrawer extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Profile()),
+                MaterialPageRoute(
+                    builder: (context) => Profile('test', 'user')),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Edit Profile'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => EditProfileScreen()),
               );
             },
           ),
@@ -69,6 +80,12 @@ class NavDrawer extends StatelessWidget {
             },
           ),
           */
+          ListTile(
+            title: const Text('Sign Out'),
+            onTap: () {
+              ProfileRepository.instance().signOut();
+            },
+          ),
         ],
       ),
     );

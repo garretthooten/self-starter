@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 
 // screens to be implemented later!
 import '../profile/create_profile_screen.dart';
-import '../profile/edit_profile_screen.dart';
+import '../screens/edit_profile_screen.dart';
 import '../profile/profile_repository.dart';
 
 class LoginRepository extends ChangeNotifier {
@@ -106,7 +106,7 @@ class LoginRepository extends ChangeNotifier {
 
               return ChangeNotifierProvider(
                 create: (_) => ProfileRepository.instance(),
-                child: EditProfileScreen(authUser.userId),
+                child: EditProfileScreen(),
               );
             }));
           } else {

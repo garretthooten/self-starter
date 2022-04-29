@@ -71,7 +71,7 @@ class _MyAppState extends State<MyApp> {
             ChangeNotifierProvider(
               create: (_) => ProfileRepository.instance(),
               child: MaterialApp(
-                home: EditProfileScreen(ProfileRepository.instance().userId),
+                home: EditProfileScreen(),
               ),
             ),
             ChangeNotifierProvider(

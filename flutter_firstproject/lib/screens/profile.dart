@@ -9,17 +9,12 @@ import 'package:path/path.dart';
 
 class Profile extends StatelessWidget {
   //Profile({Key? key, String? title}) : super(key: key);
-  Profile();
+  Profile(this.fname, this.lname);
+
+  String fname = 'Test';
+  String lname = 'User';
   ProfileRepository profileRep = ProfileRepository.instance();
   Future<User>? _currentUser;
-
-  @override
-  void initState() {
-    //_name = getName(profileRep.userId);
-    //print('hello');
-    //print("userid: $_userID");
-    //_currentUser = profileRep.getUserProfile(_userID);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +22,7 @@ class Profile extends StatelessWidget {
     String userID = profileRep.userId;
     print('current userID: $userID');
     getUser(userID);
+    print("Current name is $fname $lname");
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -72,6 +68,7 @@ class Profile extends StatelessWidget {
           const SizedBox(
             height: 45,
           ),
+          /*
           FutureBuilder<User>(
               //future: _currentUser,
               future: getUser(userID),
@@ -94,7 +91,10 @@ class Profile extends StatelessWidget {
                   }
                 }
                 return Text('State: ${snapshot.connectionState}');
-              }),
+              }), */
+          ListTile(
+            title: Text(fname + ' ' + lname),
+          ),
           ListTile(
             title: Text('About me'),
             subtitle: Text("Enter info here"),
