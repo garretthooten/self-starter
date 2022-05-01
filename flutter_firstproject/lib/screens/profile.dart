@@ -9,21 +9,20 @@ import 'package:path/path.dart';
 
 class Profile extends StatelessWidget {
   //Profile({Key? key, String? title}) : super(key: key);
-  Profile(this._firstname, this._lastname, this._about);
-  String _firstname;
-  String _lastname;
-  String _about;
-  late Future<String> _name;
-  ProfileRepository profileRep = ProfileRepository.instance();
+  Profile(this.fname, this.lname);
 
-  void initState() {
-    _name = getName(profileRep.userId);
-  }
+  String fname = 'Test';
+  String lname = 'User';
+  ProfileRepository profileRep = ProfileRepository.instance();
+  Future<User>? _currentUser;
 
   @override
   Widget build(BuildContext context) {
-    String userId = profileRep.userId;
-
+    print('Starting profile screen');
+    String userID = profileRep.userId;
+    print('current userID: $userID');
+    getUser(userID);
+    print("Current name is $fname $lname");
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -70,16 +69,35 @@ class Profile extends StatelessWidget {
             height: 45,
           ),
           /*
+          FutureBuilder<User>(
+              //future: _currentUser,
+              future: getUser(userID),
+              builder: (
+                BuildContext context,
+                AsyncSnapshot<User> snapshot,
+              ) {
+                print(snapshot.connectionState);
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Text("Waiting...");
+                } else if (snapshot.connectionState == ConnectionState.done) {
+                  if (snapshot.hasError) {
+                    return Text("Error loading profile!");
+                  } else if (snapshot.hasData) {
+                    String fname = snapshot.data?.firstName as String;
+                    String lname = snapshot.data?.lastName as String;
+                    return Text(fname + ' ' + lname);
+                  } else {
+                    return Text("Empty data");
+                  }
+                }
+                return Text('State: ${snapshot.connectionState}');
+              }), */
           ListTile(
-            title: Center(child: (Text(_firstname + ' ' + _lastname))),
+            title: Text(fname + ' ' + lname),
           ),
-          */
-          ListTile(
-              title: Center(
-                  child: (Text(profileRep.fname + ' ' + profileRep.lname)))),
           ListTile(
             title: Text('About me'),
-            subtitle: Text(_about),
+            subtitle: Text("Enter info here"),
           ),
           const SizedBox(
             height: 20,
@@ -118,12 +136,12 @@ class Profile extends StatelessWidget {
     );
   }
 
-  Future<String> getName(String userId) async {
+  Future<User> getUser(String userId) async {
     User currentUser = await profileRep.getUserProfile(userId);
     String currentName = (currentUser.firstName as String) +
         ' ' +
         (currentUser.lastName as String);
-    print('in function: $currentName');
-    return currentName;
+    print('in function: \nuserId: $userId \nname: $currentName');
+    return currentUser;
   }
 }

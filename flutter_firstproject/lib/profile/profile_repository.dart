@@ -28,6 +28,7 @@ class ProfileRepository extends ChangeNotifier {
 
   String fname = 'Test';
   String lname = 'User';
+  String about = 'About me';
 
   set email(String value) {
     _email = value;

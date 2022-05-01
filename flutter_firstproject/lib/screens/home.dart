@@ -6,7 +6,6 @@ import 'nav_drawer.dart';
 import 'otp_screen.dart';
 import '../profile/profile_repository.dart';
 import 'edit_profile_screen.dart';
-import 'profile_screen.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -48,6 +47,7 @@ class Home extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => RegisterScreen()));
             },
           ),
+          /*
           ElevatedButton(
             child: const Text('OTP'),
             onPressed: () {
@@ -74,9 +74,7 @@ class Home extends StatelessWidget {
             child: const Text('Profile'),
             onPressed: () {
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => ProfileScreen(profileRep.userId)));
+                  context, MaterialPageRoute(builder: (context) => Profile()));
             },
           ),
           ElevatedButton(
@@ -85,6 +83,7 @@ class Home extends StatelessWidget {
               profileRep.signOut();
             },
           ),
+          */
         ]),
       ),
     );

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../screens/edit_profile_screen.dart';
 import 'package:flutter_firstproject/profile/profile_repository.dart';
 import 'package:provider/provider.dart';
 import 'nav_drawer.dart';
@@ -11,8 +10,10 @@ import 'package:flutter_svg/svg.dart';
 import 'profile.dart';
 import 'register.dart';
 import '../models/ModelProvider.dart';
+import '../models/LocalPost.dart';
 import '../profile/profile_repository.dart';
 import '../style.dart';
+import 'timeline.dart';
 import '../utils/shared_prefs.dart';
 import 'package:amplify_api/amplify_api.dart';
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
@@ -26,19 +27,18 @@ import '../amplifyconfiguration.dart';
 
 import '../login/login_repository.dart';
 
-class OtpScreen extends StatelessWidget {
-  OtpScreen(
-      {required this.username, required this.password, required this.email});
-  final String username;
-  final String password;
-  final String email;
-  final loginRep = LoginRepository.instance();
+class CreatePostScreen extends StatelessWidget {
+  CreatePostScreen(this._fname, this._lname, this._posts);
+  String _fname;
+  String _lname;
+  List<LocalPost> _posts;
+  final contentController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Enter Verification Code'),
+        title: const Text('Create Post'),
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
@@ -60,16 +60,16 @@ class OtpScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
               child: Text(
-                'Check your email for a verification code',
+                'Create Post',
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
               child: TextField(
-                controller: loginRep.codeController,
+                controller: contentController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Enter Verification Code',
+                  hintText: 'Enter content',
                 ),
               ),
             ),
@@ -78,35 +78,16 @@ class OtpScreen extends StatelessWidget {
               child: FloatingActionButton.extended(
                 onPressed: () {
                   if (true /* replace this with validation criteria */) {
-                    loginRep
-                        .confirmUser(username, password, email)
-                        .then((bool value) {
-                      if (value) {
-                        loginRep
-                            .retrieveCurrentUser()
-                            .then((AuthUser authUser) {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return ChangeNotifierProvider(
-                                create: (_) => ProfileRepository.instance(),
-                                child: EditProfileScreen());
-                          }));
-                        });
-                        showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                  content: Text('Profile validated!'));
-                            });
-                      } else {
-                        showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                  content: Text('Failed to validate!'));
-                            });
-                      }
-                    });
+                    String pcontent = contentController.text;
+                    print('Button clicked! content is: $pcontent');
+                    LocalPost newPost = LocalPost(_fname, _lname, pcontent);
+                    _posts.add(newPost);
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return ChangeNotifierProvider(
+                          create: (_) => ProfileRepository.instance(),
+                          child: Timeline(_fname, _lname, _posts));
+                    }));
                   }
                 },
                 label: const Text('Submit'),

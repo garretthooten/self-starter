@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firstproject/screens/edit_profile_screen.dart';
 import 'home.dart';
 import 'login.dart';
 import 'profile.dart';
 import 'chat_list.dart';
 import 'chat.dart';
+import 'timeline.dart';
 import '../profile/profile_repository.dart';
 
 class NavDrawer extends StatelessWidget {
@@ -45,11 +47,30 @@ class NavDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) =>
-                        Profile('Test', 'User', 'A user of Self-Starter')),
+                    builder: (context) => Profile('test', 'user')),
               );
             },
           ),
+          ListTile(
+            title: const Text('Edit Profile'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => EditProfileScreen()),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Timeline'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Timeline('Garrett', 'Hooten', [])),
+              );
+            },
+          ),
+          /*
           ListTile(
             title: const Text('Chat List'),
             onTap: () {
@@ -67,6 +88,13 @@ class NavDrawer extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) => ChatScreen(),
                   ));
+            },
+          ),
+          */
+          ListTile(
+            title: const Text('Sign Out'),
+            onTap: () {
+              ProfileRepository.instance().signOut();
             },
           ),
         ],
