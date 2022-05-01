@@ -5,6 +5,7 @@ import 'login.dart';
 import 'profile.dart';
 import 'chat_list.dart';
 import 'chat.dart';
+import 'timeline.dart';
 import '../profile/profile_repository.dart';
 
 class NavDrawer extends StatelessWidget {
@@ -56,6 +57,16 @@ class NavDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => EditProfileScreen()),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Timeline'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Timeline('Garrett', 'Hooten', [])),
               );
             },
           ),

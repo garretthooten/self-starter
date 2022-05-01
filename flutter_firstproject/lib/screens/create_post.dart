@@ -10,8 +10,10 @@ import 'package:flutter_svg/svg.dart';
 import 'profile.dart';
 import 'register.dart';
 import '../models/ModelProvider.dart';
+import '../models/LocalPost.dart';
 import '../profile/profile_repository.dart';
 import '../style.dart';
+import 'timeline.dart';
 import '../utils/shared_prefs.dart';
 import 'package:amplify_api/amplify_api.dart';
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
@@ -25,15 +27,18 @@ import '../amplifyconfiguration.dart';
 
 import '../login/login_repository.dart';
 
-class EditProfileScreen extends StatelessWidget {
-  EditProfileScreen();
-  final profileRep = ProfileRepository.instance();
+class CreatePostScreen extends StatelessWidget {
+  CreatePostScreen(this._fname, this._lname, this._posts);
+  String _fname;
+  String _lname;
+  List<LocalPost> _posts;
+  final contentController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Edit Profile'),
+        title: const Text('Create Post'),
         leading: Builder(
           builder: (BuildContext context) {
             return IconButton(
@@ -55,26 +60,16 @@ class EditProfileScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 30, vertical: 30),
               child: Text(
-                'Edit Profile Details',
+                'Create Post',
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
               child: TextField(
-                controller: profileRep.firstNamesController,
+                controller: contentController,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'Enter First Name',
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-              child: TextField(
-                controller: profileRep.lastNamesController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter Last Name',
+                  hintText: 'Enter content',
                 ),
               ),
             ),
@@ -83,38 +78,17 @@ class EditProfileScreen extends StatelessWidget {
               child: FloatingActionButton.extended(
                 onPressed: () {
                   if (true /* replace this with validation criteria */) {
-                    String tfname = profileRep.firstNamesController.text;
-                    String tlname = profileRep.lastNamesController.text;
-                    print('Button clicked! Name is: $tfname $tlname');
-                    ProfileRepository.instance().fname =
-                        profileRep.firstNamesController.text;
-                    ProfileRepository.instance().lname =
-                        profileRep.lastNamesController.text;
-                    String nfname = ProfileRepository.instance().fname;
-                    String nlname = ProfileRepository.instance().lname;
-                    print('[1] Button clicked! Name is: $nfname $nlname');
+                    String pcontent = contentController.text;
+                    print('Button clicked! content is: $pcontent');
+                    LocalPost newPost = LocalPost(_fname, _lname, pcontent);
+                    _posts.add(newPost);
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
                       return ChangeNotifierProvider(
                           create: (_) => ProfileRepository.instance(),
-                          child: Profile(tfname, tlname));
+                          child: Timeline(_fname, _lname, _posts));
                     }));
                   }
-
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        // Retrieve the text the that user has entered by using the
-                        // TextEditingController.
-                        content: Text('First Name: ' +
-                            profileRep.firstNamesController.text +
-                            '\n' +
-                            'Last Name: ' +
-                            profileRep.lastNamesController.text),
-                      );
-                    },
-                  );
                 },
                 label: const Text('Submit'),
               ),
